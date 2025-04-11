@@ -9,6 +9,10 @@ const Login = () => {
     e.preventDefault()
     console.log('email is', email)
     console.log('password is', password) 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 2f1c3a9 (login page updated)
     setEmail('')
     setPassword('')
   }
