@@ -4,10 +4,10 @@ const employees = [
     firstName: "Aarav",
     email: "e@e.com",
     password: "123",
-    taskCount: { active: 1, completed: 1, failed: 1, newTask: 1 },
+    taskCount: { active: 0, completed: 1, failed: 1, newTask: 1 },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
@@ -43,10 +43,10 @@ const employees = [
     firstName: "Diya",
     email: "employee2@example.com",
     password: "123",
-    taskCount: { active: 1, completed: 2, failed: 1, newTask: 1 },
+    taskCount: { active: 0, completed: 2, failed: 1, newTask: 1 },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
@@ -92,11 +92,11 @@ const employees = [
     firstName: "Rohan",
     email: "employee3@example.com",
     password: "123",
-    taskCount: { active: 1, completed: 2, failed: 0, newTask: 1 },
+    taskCount: { active: 1, completed: 2, failed: 0, newTask: 0 },
     tasks: [
       {
         active: true,
-        newTask: true,
+        newTask: false,
         completed: false,
         failed: false,
         title: "Research competitors",
@@ -131,10 +131,10 @@ const employees = [
     firstName: "Meera",
     email: "employee4@example.com",
     password: "123",
-    taskCount: { active: 1, completed: 2, failed: 1, newTask: 1 },
+    taskCount: { active: 0, completed: 2, failed: 1, newTask: 1 },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,
@@ -180,10 +180,10 @@ const employees = [
     firstName: "Kabir",
     email: "employee5@example.com",
     password: "123",
-    taskCount: { active: 1, completed: 2, failed: 1, newTask: 1 },
+    taskCount: { active: 0, completed: 2, failed: 1, newTask: 1 },
     tasks: [
       {
-        active: true,
+        active: false,
         newTask: true,
         completed: false,
         failed: false,

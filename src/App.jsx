@@ -1,5 +1,6 @@
 import React, { use, useContext, useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
+import LandingPage from './components/LandingPage'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 import { AuthContext } from './context/AuthProvider'
@@ -8,8 +9,9 @@ import { AuthContext } from './context/AuthProvider'
 const App = () => {
 
   const [user, setUser] = useState(null)
+  const [showLogin, setShowLogin] = useState(false)
   const[loggedInUserData, setloggedInUserData] = useState(null)
-  const authData = useContext(AuthContext)
+  const [userData, SetUserData] = useContext(AuthContext)
   
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser')
@@ -26,8 +28,8 @@ const App = () => {
       setUser('admin')
       localStorage.setItem('loggedInUser', JSON.stringify({ role:'admin' }))
     }
-    else if(authData ){
-      const employee= authData.employees.find((e)=>email==e.email && e.password == password)
+    else if(userData ){
+      const employee= userData.find((e)=>email==e.email && e.password == password)
       if(employee){
       setUser('employee')
       setloggedInUserData(employee)
@@ -39,11 +41,28 @@ const App = () => {
     }
   }
 
+  const handleGoToLogin = () => {
+    setShowLogin(true)
+  }
+
+  const handleLogout = () => {
+    setUser(null)
+    setShowLogin(false)
+    setloggedInUserData(null)
+    localStorage.removeItem('loggedInUser')
+  }
 
   return (
     <>
-      {!user ? <Login handleLogin={handleLogin} />: null}
-      {user=="admin"? <AdminDashboard/>: (user == 'employee'? <EmployeeDashboard data={loggedInUserData}/>: null)}
+      {!user && !showLogin ? (
+        <LandingPage onGoToLogin={handleGoToLogin} />
+      ) : !user && showLogin ? (
+        <Login handleLogin={handleLogin} />
+      ) : user == "admin" ? (
+        <AdminDashboard changeUser={handleLogout}/>
+      ) : user == 'employee' ? (
+        <EmployeeDashboard changeUser={handleLogout} data={loggedInUserData}/>
+      ) : null}
     </>
   )
   }
